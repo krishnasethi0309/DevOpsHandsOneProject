@@ -14,13 +14,13 @@ pipeline {
         
          stage ('Code Build') {//Stage 2
             steps {
-                    bat 'mvn clean package'   
+                    sh 'mvn clean package'   
             }
         }
         
         stage ('Code Test') { //Stage 3
             steps {
-                    bat 'mvn test'   
+                    sh 'mvn test'   
             }            
             post {
                     always {
