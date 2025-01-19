@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage ('Git Clone’) {//Stage 1
+        stage ('Git Clone') {//Stage 1
             steps {
                     git 'https://github.com/jenkins-docs/simple-java-maven-app.git'    
             }
@@ -29,7 +29,7 @@ pipeline {
             }
         }
         
-        stage('Deploy’) {//Stage 4
+        stage('Deploy') {//Stage 4
                 steps
             {
                  //Locally transfer the Jar Files
@@ -40,18 +40,12 @@ pipeline {
     
     post { //Post job execution
             failure { //On Failure
-                echo 'Failure!'
-                mail to: 'kraja9841@gmail.com',
-                subject: "FAILED: ${env.JOB_NAME} - BUILD #${env.BUILD_NUMBER}",
-                body: "This is mail Notification - JOB ${JOB_NAME} - ${BUILD_URL} Failed"
+                echo 'Failure!'                
             }            
             success { //On Success
                 echo 'Build and Test Stages Successfull'
-                archiveArtifacts artifacts: '**/target/*.jar', onlyIfSuccessful: true
-                
-                mail to: 'kraja9841@gmail.com',
-                subject: "Passed: ${env.JOB_NAME} - BUILD #${env.BUILD_NUMBER}",
-                body: "This is mail Notification - JOB ${JOB_NAME} - ${BUILD_URL} Passed"
+                archiveArtifacts artifacts: '**/target/*.jar', onlyIfSuccessful: true           
+               
             }
     }
 }
