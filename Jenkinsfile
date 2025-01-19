@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-        stage ('Git Clone’) //Stage 1
+        stage ('Git Clone’) {//Stage 1
             steps {
                     git 'https://github.com/jenkins-docs/simple-java-maven-app.git'    
             }
@@ -29,7 +29,7 @@ pipeline {
             }
         }
         
-        stage('Deploy’) //Stage 4
+        stage('Deploy’) {//Stage 4
                 steps
             {
                  //Locally transfer the Jar Files
