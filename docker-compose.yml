@@ -3,4 +3,4 @@ services :
   web :
     image : krishna920/krishnaimage:latest
     ports :
-        - "9092:8080"
+        - "8081:8080"
